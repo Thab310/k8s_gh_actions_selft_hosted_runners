@@ -67,7 +67,14 @@ vault kv put secret/github-app \
 
 
 
+Run terraform:
+```bash
+Terraform init
+Terraform plan
+Terraform apply -auto-approve 
+```
 
-Terraform apply 
-
+Verify eks cluster:
+```bash
 aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
+```
