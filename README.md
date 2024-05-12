@@ -34,7 +34,9 @@ Repository permissions
 
 * Set Actions read-only access permissions
 
-Generate private key for the app (which will automatically install the private key on your machine) :warning: **Caution:** make sure to not save the key in your git repository because you definately don't want to push the key to github.
+Generate private key for the app (which will automatically install the private key on your machine) 
+
+:warning: **Caution:** make sure to not save the key in your git repository because you definately don't want to push the key to github.
 
 Install the app for the k8s runner repo.
 
