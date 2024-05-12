@@ -1,0 +1,16 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoScaler
+metadata:
+  name: k8s-runners-autoscaler
+  namespace: gh-actions
+spec:
+  scaleTargetRef:
+    name: k8s_runners
+  scaleDownDelaySecondsAfterScaleOut: 120 #2 min
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: TotalNumberOfQueuedAndInProgressWorkflowRuns  
+      repositoryNames:
+      -  Thab310/k8s_gh_actions_selft_hosted_runners
+      

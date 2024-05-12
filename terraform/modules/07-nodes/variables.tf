@@ -1,0 +1,9 @@
+variable "eks_name" {}
+variable "priv_sub_az1_id" {}
+variable "priv_sub_az2_id" {}
+variable "capacity_type" {}
+variable "instance_types" {}
+variable "scaling_config_desired_size" {}
+variable "scaling_config_max_size" {}
+variable "scaling_config_min_size" {}
+variable "update_config_max_unavailable" {}
