@@ -1,4 +1,6 @@
 # Github actions self hosted runners running on k8s
+## Architecture
+![architecture](/images/Untitled-2023-03-01-2339.png)
 ## Prerequisites
 * vs-code
 * aws cli

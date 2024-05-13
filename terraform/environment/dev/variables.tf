@@ -69,7 +69,7 @@ variable "scaling_config_max_size" {
 variable "scaling_config_min_size" {
   description = "Scaling configuration min number of nodes"
   type        = number
-  default     = 0
+  default     = 1
 }
 
 variable "update_config_max_unavailable" {

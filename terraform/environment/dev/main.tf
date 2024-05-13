@@ -89,13 +89,13 @@ module "k8s" {
 #   eks_name = local.eks_name
 # }
 module "helm_cert_manager" {
-  source = "../../modules/12-cert-manager"
+  source = "../../modules/09-cert-manager"
   depends_on = [ module.k8s ]
 }
 
 
 module "helm_actions_runner_controller" {
-  source = "../../modules/11-actions-runner-controller"
+  source = "../../modules/10-actions-runner-controller"
   depends_on = [ module.helm_cert_manager ]
 
 }
