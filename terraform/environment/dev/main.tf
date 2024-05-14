@@ -83,11 +83,6 @@ module "k8s" {
   github_app_private_key     = data.vault_generic_secret.github_app_secrets.data["github_app_private_key"]
 }
 
-# module "irsa" {
-#   source = "../../modules/09-irsa"
-
-#   eks_name = local.eks_name
-# }
 module "helm_cert_manager" {
   source = "../../modules/09-cert-manager"
   depends_on = [ module.k8s ]
