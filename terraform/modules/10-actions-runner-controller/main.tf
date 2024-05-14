@@ -12,16 +12,5 @@ resource "helm_release" "actions_runner_controller" {
     name  = "syncPeriod"
     value = "1m"
   }
-
-  # set {
-  #   name = "serviceAccount.name"
-  #   value = "actions-runner-controller"
-  # }  
-
-  # #! we must add a service account annotation to link the AWS IAM and K8S RBAC systems
-  # set {
-  #   name = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-  #   value = aws
-  # } 
 }
 
