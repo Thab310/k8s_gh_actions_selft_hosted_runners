@@ -69,6 +69,8 @@ module "nodes" {
   scaling_config_max_size       = var.scaling_config_max_size
   scaling_config_min_size       = var.scaling_config_min_size
   update_config_max_unavailable = var.update_config_max_unavailable
+
+  depends_on = [ module.eks ]
 }
 
 data "vault_generic_secret" "github_app_secrets" {
@@ -85,13 +87,23 @@ module "k8s" {
 
 module "helm_cert_manager" {
   source     = "../../modules/09-cert-manager"
+  
   depends_on = [module.k8s]
 }
 
 
 module "helm_actions_runner_controller" {
   source     = "../../modules/10-actions-runner-controller"
-  depends_on = [module.helm_cert_manager]
 
+  depends_on = [module.helm_cert_manager]
 }
 
+module "kubectl" {
+  source = "../../modules/11-kubectl"
+
+  runner = file("../../k8s/runners/runner-deployment-defition.yaml")
+  autoscaler = file("../../k8s/runners/horizontal-auto-scaler")
+
+
+  depends_on = [ module.helm_actions_runner_controller ]
+}

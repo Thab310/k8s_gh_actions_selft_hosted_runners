@@ -44,6 +44,7 @@ provider "helm" {
   kubernetes {
     host                   = module.eks.cluster_endpoint
     cluster_ca_certificate = base64decode(module.eks.cluster_ca_cert)
+    
     exec {
       api_version = "client.authentication.k8s.io/v1beta1"
       args        = ["eks", "get-token", "--cluster-name", local.eks_name]
@@ -56,6 +57,7 @@ provider "helm" {
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_ca_cert)
+
   exec {
     api_version = "client.authentication.k8s.io/v1beta1"
     args        = ["eks", "get-token", "--cluster-name", local.eks_name]
@@ -66,5 +68,18 @@ provider "kubernetes" {
 #Configure the Hashicorp Vault provider
 provider "vault" {
   // No need to specify VAULT_ADDR or VAULT_TOKEN here because we already ran them manually
+}
+
+#Configure kubectl provider
+provider "kubectl" {
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster_ca_cert)
+  load_config_file = false
+
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"
+    args        = ["eks", "get-token", "--cluster-name", local.eks_name]
+    command     = "aws"
+  }
 }
 

@@ -9,14 +9,17 @@
 * Golang
 * docker
 * kubectl
-
+## AWS Providers
+## Kubernetes Providers
+## kubectl Providers
+## TLS Providers
 ## Helm Providers
-1. cert-manager
+1. ``cert-manager``
   -  cert-manager is a Kubernetes add-on that automates the process of obtaining, renewing, and using TLS certificates within Kubernetes clusters. It integrates with various certificate authorities (e.g., Let's Encrypt, Vault) and can automatically provision and manage certificates for Kubernetes resources like Ingress, Services, and custom resources, ensuring secure encrypted communication without manual intervention.
 
 
-2. actions-runner-controller
-- 
+2. ``actions-runner-controller``
+- An Actions runner controller is a Kubernetes component that manages self-hosted runners for GitHub Actions within a Kubernetes cluster. It automates the deployment, scaling, lifecycle management, security, and monitoring of self-hosted runners as Kubernetes Pods. This allows you to leverage the capabilities of Kubernetes for your GitHub Actions workflows while still using self-hosted runners.
 > note: Actions-runner-controller uses cert-manager for certificate management of Admission webhook
 ## Runners
 There are 2 types of runners with Github actions
@@ -82,8 +85,8 @@ vault kv put secret/github-app \
   github_app_installation_id="your_github_app_installation_id" \
   github_app_private_key="-----BEGIN PRIVATE KEY-----\n...your_private_key...\n-----END PRIVATE KEY-----"
 ```
-* github_app_id : you will find on the github app homepage
-* github_app_installation_id : you will find on the url of install github app
+* github_app_id : you will find it on the github app homepage
+* github_app_installation_id : you will find iit on the url of install github app
 
 ### 3. Test Terraform code 
 
@@ -97,8 +100,10 @@ Terraform plan
 Terraform apply -auto-approve 
 ```
 
-### 6. link local kubectl to EKS
-Verify eks cluster:
+### 5. link local kubectl to EKS
+
+In a normal scenario we would need to run the command below to 
+Verify eks cluster, but we will not runner this because the kubectl provider in terraform has done the heavy lifting for us, saving us time as devops/sre/platform engineers:
 ```bash
 aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
 ```
