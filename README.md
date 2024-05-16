@@ -11,7 +11,7 @@
 * kubectl
 ## AWS Providers
 ## Kubernetes Providers
-## kubectl Providers
+## Kubectl Providers
 ## TLS Providers
 ## Helm Providers
 1. ``cert-manager``
