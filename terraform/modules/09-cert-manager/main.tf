@@ -13,7 +13,7 @@ resource "helm_release" "cert_manager" {
   }
 
   set {
-    name  = "installCRDS"
+    name  = "installCRDs"
     value = true
   }
 }

@@ -10,6 +10,14 @@
 * docker
 * kubectl
 
+## Helm Providers
+1. cert-manager
+  -  cert-manager is a Kubernetes add-on that automates the process of obtaining, renewing, and using TLS certificates within Kubernetes clusters. It integrates with various certificate authorities (e.g., Let's Encrypt, Vault) and can automatically provision and manage certificates for Kubernetes resources like Ingress, Services, and custom resources, ensuring secure encrypted communication without manual intervention.
+
+
+2. actions-runner-controller
+- 
+> note: Actions-runner-controller uses cert-manager for certificate management of Admission webhook
 ## Runners
 There are 2 types of runners with Github actions
 1. Github-hosted runners
@@ -21,9 +29,17 @@ There are 2 ways for actions-runner-controller to authenticate with the Github A
 1. Using a Github app (Increased API quota)
 2. Using a PAT 
 
-note: Actions-runner-controller uses cert-manager for certificate management of Admission webhook
-
 ## Getting started
+
+Clone the repo vis SSH or HTTPS
+  ```bash
+  #SSH
+  git clone git@github.com:Thab310/k8s_gh_actions_selft_hosted_runners.git
+
+  #HTTPS
+  git clone https://github.com/Thab310/k8s_gh_actions_selft_hosted_runners.git
+
+  ````
 
 ### 1. Create a Github app authentication
 
@@ -72,6 +88,8 @@ vault kv put secret/github-app \
 ### 3. Test Terraform code 
 
 ### 4. Create terraform resources
+cd into `terraform/environment/dev` and create `terraform.tfvars` file, assign the necessary variable values from the `variables.tf` file
+
 Run terraform:
 ```bash
 Terraform init
