@@ -43,7 +43,7 @@ Generate private key for the app (which will automatically install the private k
 Install the app for the k8s runner repo.
 
 
-### 1. Create a Github app authentication
+### 2. Create Hashicorp vault secrets
 run:
 ```bash
 vault server -dev
@@ -69,9 +69,9 @@ vault kv put secret/github-app \
 * github_app_id : you will find on the github app homepage
 * github_app_installation_id : you will find on the url of install github app
 
+### 3. Test Terraform code 
 
-
-
+### 4. Create terraform resources
 Run terraform:
 ```bash
 Terraform init
@@ -79,6 +79,7 @@ Terraform plan
 Terraform apply -auto-approve 
 ```
 
+### 6. link local kubectl to EKS
 Verify eks cluster:
 ```bash
 aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
