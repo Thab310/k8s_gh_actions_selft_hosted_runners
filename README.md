@@ -88,7 +88,18 @@ vault kv put secret/github-app \
 * github_app_id : you will find it on the github app homepage
 * github_app_installation_id : you will find iit on the url of install github app
 
-### 3. Test Terraform code 
+### 3. Test Terraform code with Terratest Go library
+
+```sh
+cd test
+go mod init "<MODULE NAME>"
+```
+Note!! Module name would be github.com/<YOUR_USERNAME>/<YOUR_REPO_NAME>
+```sh
+cd test
+go mod init github.com/Thab310/k8s_gh_actions_selft_hosted_runners
+go test
+```
 
 ### 4. Create terraform resources
 cd into `terraform/environment/dev` and create `terraform.tfvars` file, assign the necessary variable values from the `variables.tf` file
